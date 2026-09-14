@@ -22,7 +22,6 @@ exports.handler = async function (event) {
     } catch (e) {
       return { statusCode: 400, body: 'JSON invalide' };
     }
-
     const data = {
       kits: Array.isArray(payload.kits) ? payload.kits : [],
       equipements: Array.isArray(payload.equipements) ? payload.equipements : []
