@@ -1,0 +1,9 @@
+{
+  "name": "tracabilite-zone-lavage-hps",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Traçabilité Zone Lavage - Stérilisation Bac Pro HPS",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
