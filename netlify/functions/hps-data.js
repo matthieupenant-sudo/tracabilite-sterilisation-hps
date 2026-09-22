@@ -1,17 +1,11 @@
-const { getStore } = require('@netlify/blobs');
+const { connectLambda, getStore } = require('@netlify/blobs');
 
 const STORE_NAME = 'tracabilite-lavage-hps';
 const KEY = 'data';
 
-function getBlobStore() {
-  if (process.env.SITE_ID && process.env.BLOBS_TOKEN) {
-    return getStore({ name: STORE_NAME, siteID: process.env.SITE_ID, token: process.env.BLOBS_TOKEN });
-  }
-  return getStore(STORE_NAME);
-}
-
 exports.handler = async function (event) {
-  const store = getBlobStore();
+  connectLambda(event);
+  const store = getStore(STORE_NAME);
 
   if (event.httpMethod === 'GET') {
     const data = (await store.get(KEY, { type: 'json' })) || { kits: [], equipements: [] };
